@@ -46,19 +46,19 @@ with open("roi.json") as f:
 pts = np.array(data, dtype=np.int32) if isinstance(data[0], list) else np.array(data, dtype=np.int32).reshape(-1, 2)
 ROI_POLYGON = pts.reshape((-1, 1, 2))
 
-def is_inside_roi(x1, y1, x2, y2):
-    cx = (x1 + x2) // 2
-    cy = (y1 + y2) // 2
-    return cv2.pointPolygonTest(ROI_POLYGON, (cx, cy), False) >= 0
-
 # def is_inside_roi(x1, y1, x2, y2):
-#     cx = int((x1 + x2) / 2)
-#     cy = int((y1 + y2) / 2)
+#     cx = (x1 + x2) // 2
+#     cy = (y1 + y2) // 2
+#     return cv2.pointPolygonTest(ROI_POLYGON, (cx, cy), False) >= 0
 
-#     # Ensure polygon is correct shape
-#     poly = np.array(ROI_POLYGON, dtype=np.int32).reshape((-1, 1, 2))
+def is_inside_roi(x1, y1, x2, y2):
+    cx = int((x1 + x2) / 2)
+    cy = int((y1 + y2) / 2)
 
-#     return cv2.pointPolygonTest(poly, (cx, cy), False) >= 0
+    # Ensure polygon is correct shape
+    poly = np.array(ROI_POLYGON, dtype=np.int32).reshape((-1, 1, 2))
+
+    return cv2.pointPolygonTest(poly, (cx, cy), False) >= 0
 
 # ------------------- MODEL -------------------
 @st.cache_resource
