@@ -3,8 +3,6 @@ opencv-python
 ultralytics
 numpy
 jsonlib-python3
-os-sys
-threading
 queue
 sqlite3
 python-dateutil
