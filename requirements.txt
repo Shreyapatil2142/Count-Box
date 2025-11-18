@@ -8,6 +8,3 @@ threading
 queue
 sqlite3
 python-dateutil
-
-python -m venv venv                                      
-venv\Scripts\activate
